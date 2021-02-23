@@ -23,7 +23,9 @@ public class Wallet extends GenSig{
         //Constructor
     }
 
-    
+    public KeyPair.generateKeyPair(){
+        
+    }
 
     public PublicKey getAddress() {
         return this.address;
