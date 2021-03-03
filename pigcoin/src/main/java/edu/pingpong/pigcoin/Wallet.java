@@ -1,8 +1,10 @@
 package edu.pingpong.pigcoin;
 
 import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -23,10 +25,6 @@ public class Wallet extends GenSig{
         //Constructor
     }
 
-    public KeyPair.generateKeyPair(){
-        
-    }
-
     public PublicKey getAddress() {
         return this.address;
     }
@@ -37,6 +35,17 @@ public class Wallet extends GenSig{
 
     public void setSK(PrivateKey sKey) {
         this.sKey = sKey;
+    }
+
+    public PrivateKey getSKey(PrivateKey sKey){
+        return this.sKey;
+    }
+
+    public void generateKeyPair(){
+        
+        KeyPair keyPair = GenSig.generateKeyPair();
+        this.setSK(keyPair.getPrivate());
+        this.setAddress(keyPair.getPublic());
     }
 
 }
